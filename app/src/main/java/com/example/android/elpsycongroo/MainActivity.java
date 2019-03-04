@@ -28,11 +28,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(rand.nextInt(1000)%2==0) {
-                    elpsycongroo.start();
+                if(rand.nextInt(3)%2==0) {
+                    if(elpsycongroo.isPlaying()) {
+                        elpsycongroo.pause();
+                        elpsycongroo.seekTo(0);
+                        elpsycongroo.start();
+                    } else if(sonuva.isPlaying()) {
+                        sonuva.pause();
+                        sonuva.seekTo(0);
+                        elpsycongroo.start();
+                    }
+                    else
+                        elpsycongroo.start();
                 }
                 else {
-                    sonuva.start();
+                    if(sonuva.isPlaying()){
+                        sonuva.seekTo(0);
+                        sonuva.start();
+                    } else if(elpsycongroo.isPlaying()) {
+                        elpsycongroo.pause();
+                        elpsycongroo.seekTo(0);
+                        sonuva.start();
+                    }
+                    else
+                        sonuva.start();
                 }
 
                 TextView steiner = (TextView) findViewById(R.id.steiner);
