@@ -4,8 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.media.MediaPlayer;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -53,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                     else
                         sonuva.start();
                 }
+
+                    Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+                    findViewById(R.id.playmusic).startAnimation(shake);
+
 
                 TextView steiner = (TextView) findViewById(R.id.steiner);
                 double a[] = new double[4];
