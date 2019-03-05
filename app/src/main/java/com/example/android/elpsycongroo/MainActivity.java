@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int b = rand.nextInt(6);
+                int b = rand.nextInt(5);
 
                 switch (b){
                     case 0: {
