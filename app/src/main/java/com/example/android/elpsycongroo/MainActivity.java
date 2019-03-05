@@ -1,5 +1,6 @@
 package com.example.android.elpsycongroo;
 
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.media.MediaPlayer;
@@ -22,8 +23,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final MediaPlayer elpsycongroo = MediaPlayer.create(this, R.raw.music);
-        final MediaPlayer sonuva = MediaPlayer.create(this, R.raw.sonuva);
+//        int song [] = new int[] {R.raw.music, R.raw.sonuva, R.raw.mad, R.raw.mad2, R.raw.otoko};
+//        final MediaPlayer [] clips= new MediaPlayer[5];
+//        final MediaPlayer clips = MediaPlayer.create(this, song[0]);
+//        m1 = MediaPlayer.create(this, R.raw.sonuva);
+//        m2 = MediaPlayer.create(this, R.raw.mad);
+//        m3 = MediaPlayer.create(this, R.raw.mad2);
+//        m4 = MediaPlayer.create(this, R.raw.otoko);
+        final MediaPlayer m0 = MediaPlayer.create(this, R.raw.music);
+        final MediaPlayer m1 = MediaPlayer.create(this, R.raw.sonuva);
+        final MediaPlayer m2 = MediaPlayer.create(this, R.raw.mad);
+        final MediaPlayer m3 = MediaPlayer.create(this, R.raw.mad2);
+        final MediaPlayer m4 = MediaPlayer.create(this, R.raw.otoko);
 
 
         ImageButton playokabe = (ImageButton) this.findViewById(R.id.playmusic);
@@ -32,31 +43,88 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(rand.nextInt(3)%2==0) {
-                    if(elpsycongroo.isPlaying()) {
-                        elpsycongroo.pause();
-                        elpsycongroo.seekTo(0);
-                        elpsycongroo.start();
-                    } else if(sonuva.isPlaying()) {
-                        sonuva.pause();
-                        sonuva.seekTo(0);
-                        elpsycongroo.start();
+                int b = rand.nextInt(6);
+
+                switch (b){
+                    case 0: {
+                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
+                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
+                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
+                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
+                        if(m0.isPlaying()) m0.seekTo(0);
+                        m0.start();
+                        break;
                     }
-                    else
-                        elpsycongroo.start();
-                }
-                else {
-                    if(sonuva.isPlaying()){
-                        sonuva.seekTo(0);
-                        sonuva.start();
-                    } else if(elpsycongroo.isPlaying()) {
-                        elpsycongroo.pause();
-                        elpsycongroo.seekTo(0);
-                        sonuva.start();
+                    case 1: {
+                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
+                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
+                        if(m4.isPlaying()){ m3.pause(); m3.seekTo(0);}
+                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
+                        if(m1.isPlaying()) m1.seekTo(0);
+                        m1.start();
+                        break;
                     }
-                    else
-                        sonuva.start();
+                    case 2: {
+                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
+                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
+                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
+                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
+                        if(m2.isPlaying()) m2.seekTo(0);
+                        m2.start();
+                        break;
+                    }
+                    case 3: {
+                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
+                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
+                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
+                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
+                        if(m3.isPlaying()) m3.seekTo(0);
+                        m3.start();
+                        break;
+                    }
+                    case 4: {
+                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
+                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
+                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
+                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
+                        if(m4.isPlaying()) m4.seekTo(0);
+                        m4.start();
+                        break;
+                    }
+//                    default: {
+//                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
+//                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
+//                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
+//                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
+//                        if(m0.isPlaying()) m0.seekTo(0);
+//                        m0.start();
+//                    }
                 }
+//                if(rand.nextInt(3)%2==0) {
+//                    if(elpsycongroo.isPlaying()) {
+//                        elpsycongroo.pause();
+//                        elpsycongroo.seekTo(0);
+//                        elpsycongroo.start();
+//                    } else if(sonuva.isPlaying()) {
+//                        sonuva.pause();
+//                        sonuva.seekTo(0);
+//                        elpsycongroo.start();
+//                    }
+//                    else
+//                        elpsycongroo.start();
+//                }
+//                else {
+//                    if(sonuva.isPlaying()){
+//                        sonuva.seekTo(0);
+//                        sonuva.start();
+//                    } else if(elpsycongroo.isPlaying()) {
+//                        elpsycongroo.pause();
+//                        elpsycongroo.seekTo(0);
+//                        sonuva.start();
+//                    }
+//                    else
+//                        sonuva.start();
+//                }
 
                     Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
                     findViewById(R.id.playmusic).startAnimation(shake);
