@@ -18,6 +18,20 @@ public class MainActivity extends AppCompatActivity {
 
     Random rand = new Random();
 
+    public void checkplaying(MediaPlayer m){
+        if(m.isPlaying()) {
+            m.pause();
+            m.seekTo(0);
+        }
+    }
+
+    public void playnow(MediaPlayer m) {
+        if(m.isPlaying()) {
+            m.seekTo(0);
+        }
+        m.start();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,101 +57,62 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int b = rand.nextInt(5);
+                int b = rand.nextInt(6);
 
                 switch (b){
                     case 0: {
-                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
-                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
-                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
-                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
-                        if(m0.isPlaying()) m0.seekTo(0);
-                        m0.start();
+                        checkplaying(m1);
+                        checkplaying(m2);
+                        checkplaying(m3);
+                        checkplaying(m4);
+                        playnow(m0);
                         break;
                     }
                     case 1: {
-                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
-                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
-                        if(m4.isPlaying()){ m3.pause(); m3.seekTo(0);}
-                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
-                        if(m1.isPlaying()) m1.seekTo(0);
-                        m1.start();
+                        checkplaying(m0);
+                        checkplaying(m2);
+                        checkplaying(m3);
+                        checkplaying(m4);
+                        playnow(m1);
                         break;
                     }
                     case 2: {
-                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
-                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
-                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
-                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
-                        if(m2.isPlaying()) m2.seekTo(0);
-                        m2.start();
+                        checkplaying(m1);
+                        checkplaying(m2);
+                        checkplaying(m3);
+                        checkplaying(m4);
+                        playnow(m2);
                         break;
                     }
                     case 3: {
-                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
-                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
-                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
-                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
-                        if(m3.isPlaying()) m3.seekTo(0);
-                        m3.start();
+                        checkplaying(m1);
+                        checkplaying(m2);
+                        checkplaying(m3);
+                        checkplaying(m4);
+                        playnow(m3);
                         break;
                     }
                     case 4: {
-                        if(m0.isPlaying()){ m0.pause(); m0.seekTo(0);}
-                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
-                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
-                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
-                        if(m4.isPlaying()) m4.seekTo(0);
-                        m4.start();
+                        checkplaying(m0);
+                        checkplaying(m1);
+                        checkplaying(m2);
+                        checkplaying(m3);
+                        playnow(m4);
                         break;
                     }
-//                    default: {
-//                        if(m1.isPlaying()){ m1.pause(); m1.seekTo(0);}
-//                        if(m2.isPlaying()){ m2.pause(); m2.seekTo(0);}
-//                        if(m3.isPlaying()){ m3.pause(); m3.seekTo(0);}
-//                        if(m4.isPlaying()){ m4.pause(); m4.seekTo(0);}
-//                        if(m0.isPlaying()) m0.seekTo(0);
-//                        m0.start();
-//                    }
                 }
-//                if(rand.nextInt(3)%2==0) {
-//                    if(elpsycongroo.isPlaying()) {
-//                        elpsycongroo.pause();
-//                        elpsycongroo.seekTo(0);
-//                        elpsycongroo.start();
-//                    } else if(sonuva.isPlaying()) {
-//                        sonuva.pause();
-//                        sonuva.seekTo(0);
-//                        elpsycongroo.start();
-//                    }
-//                    else
-//                        elpsycongroo.start();
-//                }
-//                else {
-//                    if(sonuva.isPlaying()){
-//                        sonuva.seekTo(0);
-//                        sonuva.start();
-//                    } else if(elpsycongroo.isPlaying()) {
-//                        elpsycongroo.pause();
-//                        elpsycongroo.seekTo(0);
-//                        sonuva.start();
-//                    }
-//                    else
-//                        sonuva.start();
-//                }
 
-                    Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-                    findViewById(R.id.playmusic).startAnimation(shake);
+                Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+                findViewById(R.id.playmusic).startAnimation(shake);
 
+                double a[] = new double[2];
+                a[0] = 1.048596;
+                a[1] = rand.nextDouble();
+
+                double number = a[rand.nextInt(2)];
+                String message = "" + String.format("%.6f",number);
 
                 TextView steiner = (TextView) findViewById(R.id.steiner);
-                double a[] = new double[4];
-                a[0] = 1.048596;
-                a[1] = 0.009384;
-                a[2] = 0.994382;
-                a[3] = -.275349;
-                double number = a[rand.nextInt(4)];
-                String message = "" + number;
                 steiner.setText(message);
             }
         });
