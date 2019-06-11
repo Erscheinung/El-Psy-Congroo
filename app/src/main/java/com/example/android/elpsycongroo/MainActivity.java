@@ -1,6 +1,5 @@
 package com.example.android.elpsycongroo;
 
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.media.MediaPlayer;
@@ -9,8 +8,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -37,13 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        int song [] = new int[] {R.raw.music, R.raw.sonuva, R.raw.mad, R.raw.mad2, R.raw.otoko};
-//        final MediaPlayer [] clips= new MediaPlayer[5];
-//        final MediaPlayer clips = MediaPlayer.create(this, song[0]);
-//        m1 = MediaPlayer.create(this, R.raw.sonuva);
-//        m2 = MediaPlayer.create(this, R.raw.mad);
-//        m3 = MediaPlayer.create(this, R.raw.mad2);
-//        m4 = MediaPlayer.create(this, R.raw.otoko);
+
         final MediaPlayer m0 = MediaPlayer.create(this, R.raw.music);
         final MediaPlayer m1 = MediaPlayer.create(this, R.raw.sonuva);
         final MediaPlayer m2 = MediaPlayer.create(this, R.raw.mad);
@@ -57,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int b = rand.nextInt(6);
+                int b = rand.nextInt(5);
 
                 switch (b){
                     case 0: {
