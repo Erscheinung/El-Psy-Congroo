@@ -6,7 +6,10 @@ import android.media.MediaPlayer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -92,9 +95,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                 }
+                
+                if (rand.nextInt(100)%3== 0){
+                    RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    rotate.setDuration(2000);
+                    rotate.setInterpolator(new LinearInterpolator());
 
-                Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-                findViewById(R.id.playmusic).startAnimation(shake);
+                    findViewById(R.id.playmusic).startAnimation(rotate);
+                } else {
+                    Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+                    findViewById(R.id.playmusic).startAnimation(shake);
+                }
+
 
                 double a[] = new double[2];
                 a[0] = 1.048596;
